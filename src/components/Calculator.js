@@ -30,7 +30,7 @@ const Calculator = ({ }) => {
     let margin = quantity * leverage / entry
     let priceChange = tradeType === "Long" ? exit - entry : entry - exit
     setProfit(margin * priceChange)
-  })
+  }, [tradeType, quantity, leverage, entry, exit, profit])
 
   return (
     <Center mt={20}>
@@ -76,11 +76,6 @@ const Calculator = ({ }) => {
             </InputGroup>
           </FormControl>
         </Flex>
-        {/* <ButtonGroup>
-          <Button colorScheme="green" onClick={result}>Calculate</Button>
-          <Button variant="ghost">Clear</Button>
-        </ButtonGroup> */}
-
         <p>Profit: {profit} </p>
       </Stack>
     </Center>

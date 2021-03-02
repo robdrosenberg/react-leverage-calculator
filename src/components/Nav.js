@@ -1,5 +1,5 @@
 import React from "react"
-import { Flex, Center, Spacer, Box, Heading } from '@chakra-ui/react'
+import { Flex, Spacer, Box, Heading } from '@chakra-ui/react'
 import { ColorModeSwitcher } from '../ColorModeSwitcher';
 
 const Nav = ({ }) => {
