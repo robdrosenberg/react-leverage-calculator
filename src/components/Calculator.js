@@ -13,7 +13,7 @@ import {
   Stack,
 } from '@chakra-ui/react'
 
-const Calculator = ({ }) => {
+const Calculator = () => {
   const [tradeType, setTradeType] = useState("Long")
   const [quantity, setQuantity] = useState(0)
   const [leverage, setLeverage] = useState(0)
