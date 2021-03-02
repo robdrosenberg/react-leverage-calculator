@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react"
 import {
-  Box,
-  Button,
-  ButtonGroup,
   Center,
   Input,
   InputGroup,
@@ -14,8 +11,6 @@ import {
   Radio,
   RadioGroup,
   Stack,
-  VStack,
-  Select
 } from '@chakra-ui/react'
 
 const Calculator = ({ }) => {
