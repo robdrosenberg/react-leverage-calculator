@@ -23,6 +23,7 @@ const Calculator = () => {
   const [exit, setExit] = useState(0)
   const [grossProfit, setGrossProfit] = useState("")
   const [netProfit, setNetProfit] = useState("")
+  const [liquidationPrice, setLiquidationPrice] = useState("")
 
   const handleQuantityChange = (event) => setQuantity(event.target.value)
   const handleLeverageChange = (event) => setLeverage(event.target.value)
@@ -33,9 +34,12 @@ const Calculator = () => {
     let margin = quantity * leverage / entry
     let priceChange = tradeType === "Long" ? exit - entry : entry - exit
     let fee = orderType === "Market" ? margin * entry * 0.00075 : margin * entry * -0.00025
+    setLiquidationPrice(tradeType === "Long" ? (entry * leverage) / (Number(leverage) +1 - (.005 * leverage)) : 
+                                               (entry * leverage) / (leverage -1 + (.005 * leverage))
+                        )
     setGrossProfit(margin * priceChange)
     setNetProfit((margin * priceChange) - fee)
-  }, [tradeType, orderType, quantity, leverage, entry, exit, grossProfit, netProfit])
+  }, [tradeType, orderType, quantity, leverage, entry, exit, grossProfit, netProfit, liquidationPrice])
 
   return (
     <Center mt={20}>
@@ -92,8 +96,13 @@ const Calculator = () => {
             </InputGroup>
           </FormControl>
         </Flex>
-          <p>Profit: {grossProfit} </p>
-          <p>Profit after Fees: {netProfit}</p>
+        <Flex>
+          <p>Profit: {grossProfit.toFixed(2)} </p>
+          <Spacer />
+          <p>Liquidation Price: {liquidationPrice.toFixed(2)}</p>
+        </Flex>
+          <p>Profit after Fees: {netProfit.toFixed(2)}</p>
+        
       </Stack>
     </Center>
   )
