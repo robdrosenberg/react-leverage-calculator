@@ -11,8 +11,7 @@ import {
   FormLabel,
   Radio,
   RadioGroup,
-  Stack,
-  Spacer
+  Stack
 } from '@chakra-ui/react'
 
 const Calculator = () => {
@@ -36,11 +35,11 @@ const Calculator = () => {
     let margin = entry === 0 ? 0 : quantity * leverage / entry
     setPriceChange(tradeType === "Long" ? exit - entry : entry - exit)
     let fee = orderType === "Market" ? margin * entry * 0.00075 : margin * entry * -0.00025
-    setLiquidationPrice(tradeType === "Long" ? ((entry * leverage) / (Number(leverage) +1 - (.005 * leverage))).toFixed(2) : 
-                                               ((entry * leverage) / (leverage -1 + (.005 * leverage))).toFixed(2)
-                        )
-    setGrossProfit( entry === 0 ? 0 : (margin * priceChange).toFixed(2) )
-    setNetProfit( entry === 0 ? 0 : ((margin * priceChange) - fee).toFixed(2) )
+    setLiquidationPrice(tradeType === "Long" ? ((entry * leverage) / (Number(leverage) + 1 - (.005 * leverage))).toFixed(2) :
+      ((entry * leverage) / (leverage - 1 + (.005 * leverage))).toFixed(2)
+    )
+    setGrossProfit(entry === 0 ? 0 : (margin * priceChange).toFixed(2))
+    setNetProfit(entry === 0 ? 0 : ((margin * priceChange) - fee).toFixed(2))
   }, [tradeType, orderType, quantity, leverage, entry, exit, grossProfit, netProfit, liquidationPrice, priceChange])
 
   return (
@@ -98,21 +97,21 @@ const Calculator = () => {
             </InputGroup>
           </FormControl>
         </Flex>
-        
+
         {/* <Flex>
           <p>Profit: {grossProfit} </p>
           <Spacer />
           <p>Liquidation Price: {liquidationPrice}</p>
         </Flex>
           <p>Profit after Fees: {netProfit}</p> */}
-          <Stats 
-            grossProfit={grossProfit} 
-            netProfit={netProfit} 
-            liquidationPrice={liquidationPrice}
-            priceChange={priceChange}
-            entry={entry}
-          />
-        
+        <Stats
+          grossProfit={grossProfit}
+          netProfit={netProfit}
+          liquidationPrice={liquidationPrice}
+          priceChange={priceChange}
+          entry={entry}
+        />
+
       </Stack>
     </Center>
   )
