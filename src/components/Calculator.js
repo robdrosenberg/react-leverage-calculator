@@ -110,6 +110,7 @@ const Calculator = () => {
           liquidationPrice={liquidationPrice}
           priceChange={priceChange}
           entry={entry}
+          quantity={quantity}
         />
 
       </Stack>

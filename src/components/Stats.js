@@ -8,9 +8,9 @@ import {
   StatArrow
 } from '@chakra-ui/react'
 
-const Calculator = (props) => {
+const Stats = (props) => {
 
-  const {grossProfit, netProfit, entry, priceChange} = props
+  const {grossProfit, netProfit, entry, priceChange, quantity} = props
 
   const [grossArrow, setGrossArrow] = useState("increase")
   const [netArrow, setNetArrow] = useState("increase")
@@ -19,8 +19,8 @@ const Calculator = (props) => {
 
 
   useEffect(() => {
-    setGrossPercent(entry === 0 ? 0 : ((grossProfit / entry) * 100).toFixed(2))
-    setNetPercent(entry === 0 ? 0 : ((netProfit / entry) * 100).toFixed(2)) 
+    setGrossPercent(entry === 0 ? 0 : ((grossProfit / quantity) * 100).toFixed(2))
+    setNetPercent(entry === 0 ? 0 : ((netProfit / quantity) * 100).toFixed(2)) 
     setGrossArrow(grossProfit >= 0 ? "increase" : "decrease")
     setNetArrow(netProfit >= 0 ? "increase" : "decrease")
   }, [grossPercent ,netPercent ,grossArrow, netArrow, grossProfit, netProfit, priceChange, entry])
@@ -53,4 +53,4 @@ const Calculator = (props) => {
   )
 }
 
-export default Calculator
+export default Stats
