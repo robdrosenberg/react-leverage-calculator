@@ -34,7 +34,7 @@ const Calculator = () => {
   useEffect(() => {
     let margin = entry === 0 ? 0 : quantity * leverage / entry
     setPriceChange(tradeType === "Long" ? exit - entry : entry - exit)
-    let fee = orderType === "Market" ? margin * entry * 0.00075 : margin * entry * -0.00025
+    let fee = orderType === "Market" ? margin * entry * 0.0015 : margin * entry * -0.0005
     setLiquidationPrice(tradeType === "Long" ? ((entry * leverage) / (Number(leverage) + 1 - (.005 * leverage))).toFixed(2) :
       ((entry * leverage) / (leverage - 1 + (.005 * leverage))).toFixed(2)
     )
