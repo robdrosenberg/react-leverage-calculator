@@ -98,19 +98,13 @@ const Calculator = () => {
           </FormControl>
         </Flex>
 
-        {/* <Flex>
-          <p>Profit: {grossProfit} </p>
-          <Spacer />
-          <p>Liquidation Price: {liquidationPrice}</p>
-        </Flex>
-          <p>Profit after Fees: {netProfit}</p> */}
         <Stats
           grossProfit={grossProfit}
           netProfit={netProfit}
           liquidationPrice={liquidationPrice}
           priceChange={priceChange}
-          entry={entry}
           quantity={quantity}
+          entry={entry}
         />
 
       </Stack>
