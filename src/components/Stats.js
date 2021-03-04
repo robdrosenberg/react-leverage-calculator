@@ -23,7 +23,7 @@ const Stats = (props) => {
     setNetPercent(entry === 0 ? 0 : ((netProfit / quantity) * 100).toFixed(2)) 
     setGrossArrow(grossProfit >= 0 ? "increase" : "decrease")
     setNetArrow(netProfit >= 0 ? "increase" : "decrease")
-  }, [grossPercent ,netPercent ,grossArrow, netArrow, grossProfit, netProfit, priceChange, entry])
+  }, [grossPercent ,netPercent ,grossArrow, netArrow, grossProfit, netProfit, priceChange, entry, quantity])
 
   return (
     <StatGroup>
